@@ -8,6 +8,8 @@ public class EnemyNavMeshBehaviour : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
     [SerializeField] private Transform player_transform;
+    [SerializeField] private float range_of_detection = 20f;
+    private float _distance_to_player;
     
     private void Awake()
     {
@@ -27,6 +29,10 @@ public class EnemyNavMeshBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _navMeshAgent.destination = player_transform.position;
+        _distance_to_player = (transform.position - player_transform.position).magnitude;
+        if (_distance_to_player <= range_of_detection)
+        {
+            _navMeshAgent.destination = player_transform.position;    
+        } 
     }
 }
