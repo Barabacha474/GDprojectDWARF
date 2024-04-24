@@ -51,19 +51,13 @@ public class GrenadeShoot : Projectile
                 float distance = Vector3.Distance(transform.position, hit.transform.position);
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage((int)Mathf.Lerp(minDamage, maxDamage, distance / explosionRadius));
             }
-            
         }
     }
 
     private void PushByExplosion()
     {
     }
-
-
-    private void OnCollisionEnter()
-    {
-        _rigidbody.velocity = _rigidbody.velocity / 2;
-    }
+    
 
     override 
         public int GetCost()

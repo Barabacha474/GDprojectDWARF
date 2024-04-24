@@ -31,7 +31,7 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
     void Update()
     {
         float horizontalRot = Input.GetAxis("Mouse X") * sensitivityHor;
-        Debug.Log(horizontalRot);
+        //Debug.Log(horizontalRot);
         transform.Rotate(0, horizontalRot, 0);
         _current_direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))

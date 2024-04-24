@@ -4972,10 +4972,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosion_force: 1000
   _explosion_radius: 20
+  maxDamage: 50
+  minDamage: 5
   _max_number_of_hits: 20
   _hit_layer:
     serializedVersion: 2
     m_Bits: 320
+  _damage_layer:
+    serializedVersion: 2
+    m_Bits: 64
   _obstacle_layer:
     serializedVersion: 2
     m_Bits: 128
@@ -4993,5 +4998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 091576e2e7c8f0545bff1eeea78aa3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwForce: 25
+  maxDamage: 50
+  minDamage: 5
   _explosiveScript: {fileID: 7372083484018397464}
   _delay: 3
