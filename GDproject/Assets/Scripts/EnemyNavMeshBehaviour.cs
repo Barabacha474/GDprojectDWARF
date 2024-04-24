@@ -9,7 +9,10 @@ public class EnemyNavMeshBehaviour : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
     [SerializeField] private Transform player_transform;
     [SerializeField] private float range_of_detection = 20f;
+    [SerializeField] private float range_of_attack = 5f;
     private float _distance_to_player;
+    
+    [SerializeField] private ProjectileThrower _projectileThrower;
     
     private void Awake()
     {
@@ -33,6 +36,16 @@ public class EnemyNavMeshBehaviour : MonoBehaviour
         if (_distance_to_player <= range_of_detection)
         {
             _navMeshAgent.destination = player_transform.position;    
-        } 
+        }
+
+        if (_distance_to_player <= range_of_attack)
+        {
+            Attack();
+        }
+    }
+    
+    public void Attack()
+    {
+        _projectileThrower.Throw();
     }
 }

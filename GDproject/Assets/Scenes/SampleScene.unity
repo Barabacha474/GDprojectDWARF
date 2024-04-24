@@ -2154,6 +2154,7 @@ GameObject:
   - component: {fileID: 5340228902079882203}
   - component: {fileID: 5340228902079882202}
   - component: {fileID: 5340228902079882204}
+  - component: {fileID: 5340228902079882205}
   m_Layer: 6
   m_Name: Bat
   m_TagString: Untagged
@@ -2396,6 +2397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_transform: {fileID: 1371357625}
   range_of_detection: 20
+  range_of_attack: 10
+  _projectileThrower: {fileID: 5340228902079882205}
 --- !u!23 &4169380914049016077
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2589,6 +2592,25 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.50322676, z: 0}
+--- !u!114 &5340228902079882205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854252880025109962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc741a167167e5a49b90e47d45b20296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera_transform: {fileID: 2719540635253095068}
+  _projectile_spawn_transform: {fileID: 2719540635253095068}
+  _projectile: {fileID: 6499049127060723269, guid: f01e33d9120bbd14f9b5385c53930a18, type: 3}
+  _throw_force: 30
+  _throw_upward_force: 1
+  _able_to_throw: 1
+  _cooldown: 2
 --- !u!1 &5561568382357313452
 GameObject:
   m_ObjectHideFlags: 0

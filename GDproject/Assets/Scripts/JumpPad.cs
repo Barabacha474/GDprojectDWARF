@@ -14,4 +14,6 @@ public class JumpPad : MonoBehaviour
             rb.AddForce(transform.up * 5f * _force);
         }
     }
+
+    
 }
