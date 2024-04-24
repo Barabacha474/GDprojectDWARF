@@ -132,13 +132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7079a75d71a63484fa4908542f45ce8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosion_force: 1000
+  _explosion_force: 1500
   _explosion_radius: 1000
   _max_number_of_hits: 20
   _hit_layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   _obstacle_layer:
     serializedVersion: 2
     m_Bits: 128
   _explosion_effect: {fileID: 7852541608544545031, guid: 8a76194804bce51428592d455b1ba0a9, type: 3}
+  _explosion_effect_position_height: 0
