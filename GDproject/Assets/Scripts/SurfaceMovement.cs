@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using UnityEngine;
 
@@ -10,17 +11,20 @@ public class SurfaceMovement : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float mass = 2f;
     private Vector3 _currentGravity;
-    
-    [Header("Movement settings")]
+
+    [Header("Movement settings")] 
+    private float _movement_speed;
     [SerializeField] private float walk_speed = 6.0f;
-    [SerializeField] private float _jump_force = 20f;
+    [SerializeField] private float run_speed = 12f;
+    [SerializeField] private float _jump_force = 15f;
     [SerializeField] private float max_angle = 45f;
     [SerializeField] private float _player_height = 2f;
     [SerializeField] private LayerMask _ground_lm;
     private Vector3 _normal;
     private Vector3 _offset;
     private bool _grounded;
-    private float _angle;
+    private bool _command_running;
+    private bool _command_move;
     private MovingState _movingState;
     private Dictionary<String, ContactPoint[]> CurrentContactPointsMap = new Dictionary<string, ContactPoint[]>();
     
@@ -33,7 +37,6 @@ public class SurfaceMovement : MonoBehaviour
         STANDING,
         WALKING,
         RUNNING,
-        CROUCHING,
         AIR
     }
     
@@ -44,19 +47,54 @@ public class SurfaceMovement : MonoBehaviour
         {
             throw new Exception("Incorrect max angle! It should be between 0 and 90");
         }
-
+        
         _rigidbody.useGravity = false;
         _normal = Vector3.up;
+        _offset = Vector3.zero;
+        _movement_speed = walk_speed;
     }
     
     void FixedUpdate()
     {
         ObeyGravity();
-        //_grounded = CheckGrounded();
     }
 
     private void Update()
     {
+    }
+
+    public void setRunningBool(bool setBool)
+    {
+        _command_running = setBool;
+    }
+    private void setState()
+    {
+        if (_grounded && _command_move)
+        {
+            if (_command_running)
+            {
+                _movement_speed = run_speed;
+                _movingState = MovingState.RUNNING;
+            }
+            else
+            {
+                _movement_speed = walk_speed;
+                _movingState = MovingState.WALKING;
+            }
+        }
+        else if (_grounded)
+        {
+            _movingState = MovingState.STANDING;
+        }
+        else
+        {
+            _movingState = MovingState.AIR;
+        }
+
+        if (show_debug_log)
+        {
+            Debug.Log(_movingState + " " + _rigidbody.velocity.magnitude);
+        }
     }
     
     void ObeyGravity()
@@ -79,12 +117,49 @@ public class SurfaceMovement : MonoBehaviour
 
     public void Move(Vector3 direction)
     {
+        _command_move = true;
+        setState();
+        CalculateNormal(direction);
+        
         _offset = Vector3.ProjectOnPlane(direction, _normal).normalized;
-        if (!validAngle(_angle))
+        
+        _rigidbody.AddForce(_offset * (_movement_speed * 3000f * Time.deltaTime), ForceMode.Force);
+        
+        LimitSpeed();
+    }
+
+    private void LimitSpeed()
+    {
+        Vector3 speed;
+        if (_grounded)
         {
-            _offset.y = 0;
+            speed = _rigidbody.velocity;
         }
-        _rigidbody.MovePosition(_rigidbody.position + _offset * (walk_speed * Time.deltaTime));
+        else
+        {
+            speed = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+        }
+
+        if (speed.magnitude > _movement_speed)
+        {
+            if (_grounded)
+            {
+                _rigidbody.velocity = speed.normalized * _movement_speed;
+            }
+            else
+            {
+                var y = _rigidbody.velocity.y;
+                var new_speed = speed.normalized * _movement_speed;
+                new_speed.y = y;
+                _rigidbody.velocity = new_speed;
+            }
+        }
+    }
+
+    public void DoNotMove()
+    {
+        _command_move = false;
+        setState();
     }
 
     public void Jump()
@@ -100,8 +175,6 @@ public class SurfaceMovement : MonoBehaviour
         if (_ground_lm == (_ground_lm | (1 << other.gameObject.layer)))
         {
             CurrentContactPointsMap.Add(other.gameObject.name, other.contacts);
-            
-            CalculateNormal();
 
             if (show_debug_log)
             {
@@ -113,6 +186,7 @@ public class SurfaceMovement : MonoBehaviour
             }
             
             _grounded = CheckGrounded();
+            setState();
         }
     }
 
@@ -128,8 +202,6 @@ public class SurfaceMovement : MonoBehaviour
         if (_ground_lm == (_ground_lm | (1 << other.gameObject.layer)))
         {
             CurrentContactPointsMap.Remove(other.gameObject.name);
-            
-            CalculateNormal();
 
             if (show_debug_log)
             {
@@ -141,10 +213,11 @@ public class SurfaceMovement : MonoBehaviour
             }
          
             _grounded = CheckGrounded();
+            setState();
         }
     }
 
-    void CalculateNormal()
+    void CalculateNormal(Vector3 direction)
     {
         if (CurrentContactPointsMap.Count == 0)
         {
@@ -153,11 +226,19 @@ public class SurfaceMovement : MonoBehaviour
         }   
         
         _normal = Vector3.zero;
+        float max_angle = 0f;
         foreach (var contact in CurrentContactPointsMap)
         {
             if (validAngle(Vector3.Angle(Vector3.up, contact.Value[0].normal)))
             {
-                _normal += contact.Value[0].normal;
+                float cur_angle = Vector3.Angle(
+                    new Vector3(contact.Value[0].normal.x, 0, contact.Value[0].normal.z),
+                    direction);
+                if (cur_angle > max_angle)
+                {
+                    _normal = contact.Value[0].normal;
+                    max_angle = cur_angle;
+                } 
             }
         }
         _normal = _normal.normalized;
