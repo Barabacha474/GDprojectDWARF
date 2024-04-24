@@ -31,31 +31,37 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
     void Update()
     {
         float horizontalRot = Input.GetAxis("Mouse X") * sensitivityHor;
-        //Debug.Log(horizontalRot);
         transform.Rotate(0, horizontalRot, 0);
         _current_direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            _current_direction += transform.forward * Mathf.Abs(Input.GetAxis("Vertical"));
+            _current_direction += transform.forward;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            _current_direction += -transform.forward * Mathf.Abs(Input.GetAxis("Vertical"));
+            _current_direction += -transform.forward;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            _current_direction += transform.right * Mathf.Abs(Input.GetAxis("Horizontal"));
+            _current_direction += transform.right;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            _current_direction += -transform.right * Mathf.Abs(Input.GetAxis("Horizontal"));
+            _current_direction += -transform.right;
         }
+        
+        _surfaceMovement.setRunningBool(Input.GetKey(KeyCode.LeftShift));
+        
         if (_current_direction != Vector3.zero)
         {
             _surfaceMovement.Move(_current_direction);    
         }
+        else
+        {
+            _surfaceMovement.DoNotMove();
+        }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             _surfaceMovement.Jump();
         }
