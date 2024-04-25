@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -947367990744639882}
   - component: {fileID: -5045008368325720359}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,11 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94be9f30be51b1f41948d16639cecf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  damage: 0
+  speed: 31
+  damage: 10
+  _cost: 8
   hit_layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   explosiveScript: {fileID: -5045008368325720359}
 --- !u!54 &-947367990744639882
 Rigidbody:
@@ -212,6 +213,6 @@ MonoBehaviour:
   _obstacle_layer:
     serializedVersion: 2
     m_Bits: 128
-  _explosion_effect: {fileID: 0}
+  _explosion_effect: {fileID: 7852541608544545031, guid: 8a76194804bce51428592d455b1ba0a9, type: 3}
   _explosion_effect_position_height: 0.5
   destroy_after_explosion: 1

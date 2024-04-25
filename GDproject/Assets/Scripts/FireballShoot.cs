@@ -7,7 +7,7 @@ public class FireballShoot : Projectile
     private Rigidbody _rigidbody;
     public float speed;
     public int damage;
-    private int _cost = 10;
+    [SerializeField] private int _cost = 10;
     private int _impulse = 20;
     [SerializeField] private LayerMask hit_layer;
     [SerializeField] private ExplosiveScript explosiveScript;
