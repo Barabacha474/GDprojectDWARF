@@ -19,17 +19,17 @@ public class ExplosiveScript : MonoBehaviour
     [SerializeField] private LayerMask _obstacle_layer;
     [SerializeField] private GameObject _explosion_effect;
     [SerializeField] private float _explosion_effect_position_height = 0.5f;
+    [SerializeField] private bool destroy_after_explosion = true;
     private Collider[] _hits;
     private bool _exploded = false;
     
-    // Start is called before the first frame update
     void Start()
     {
         _hits = new Collider[_max_number_of_hits];
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKey(KeyCode.E))
@@ -44,25 +44,27 @@ public class ExplosiveScript : MonoBehaviour
         if (!_exploded)
         {
             _exploded = true;
-            
-            int number_of_hits = Physics.OverlapSphereNonAlloc(transform.position, _explosion_radius, _hits, _hit_layer);
-            
+
+            int number_of_hits =
+                Physics.OverlapSphereNonAlloc(transform.position, _explosion_radius, _hits, _hit_layer);
+
             for (int i = 0; i < number_of_hits; i++)
             {
                 float distance = Vector3.Distance(_hits[i].transform.position, transform.position);
-                
-                Debug.Log(_hits[i].transform.ToString());
 
-                Instantiate(_explosion_effect, transform.position + transform.up * _explosion_effect_position_height, transform.rotation);
-                
+                //Debug.Log(_hits[i].transform.ToString());
+
+                Instantiate(_explosion_effect, transform.position + transform.up * _explosion_effect_position_height,
+                    transform.rotation);
+
                 if (!Physics.Raycast(transform.position,
                         (_hits[i].transform.position - transform.position).normalized, distance, _obstacle_layer.value))
                 {
                     Rigidbody rb = _hits[i].GetComponent<Rigidbody>();
-                    
+
                     if (rb != null)
                     {
-                        rb.AddExplosionForce(_explosion_force, transform.position, _explosion_radius);    
+                        rb.AddExplosionForce(_explosion_force, transform.position, _explosion_radius);
                     }
 
                     if (_hits[i].gameObject.layer == _damage_layer)
@@ -84,7 +86,11 @@ public class ExplosiveScript : MonoBehaviour
                     }
                 }
             }
-            Destroy(gameObject);
+
+            if (destroy_after_explosion)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

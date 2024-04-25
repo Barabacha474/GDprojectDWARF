@@ -8,13 +8,9 @@ public class Granade : Projectile
     
     private Rigidbody _rigidbody;
     [SerializeField] private float throwForce;
-    [SerializeField] private int maxDamage = 50;
-    [SerializeField] private int minDamage = 5;
     private int _cost = 20;
     private int _impulse = 1;
-    private float _explosionTime = 3;
-    private float _timeToExplode;
-    [SerializeField] private ExplosiveScript _explosiveScript;
+    [SerializeField] private ExplosiveScript explosiveScript;
 
     [SerializeField] private float _delay = 1f;
 
@@ -36,10 +32,10 @@ public class Granade : Projectile
     void Update()
     {
         _current_delay -= Time.deltaTime;
-        if (_current_delay <= 0 && !_explosiveScript.isExploded())
+        if (_current_delay <= 0 && !explosiveScript.isExploded())
         {
             Debug.Log("Time to explode!");
-            _explosiveScript.Explode();
+            explosiveScript.Explode();
         }
     }
 

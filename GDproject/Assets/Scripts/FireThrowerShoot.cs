@@ -6,19 +6,20 @@ public class FireThrowerShoot : Projectile
 {
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject fire;
-    public float speed;
-    public int damage ;
-    public string enemyTag = "enemy";
-    private int _cost = 20;
-    private float _fireThrowTime = 0.05f;
+    [SerializeField] private float speed;
+    [SerializeField] private int damage ;
+    [SerializeField] private LayerMask hit_layer;
+    [SerializeField] private int cost = 20;
+    [SerializeField] private float _fireThrowTime = 0.05f;
     private float _currentTimeToThrow;
-    private int _maxHeightDistance = 15;
-    private int _impulse = 20;
-    
+    [SerializeField] private int _maxHeightDistance = 15;
+    [SerializeField] private int _impulse = 20;
+    [SerializeField] private ExplosiveScript explosiveScript;
+
     override 
         public int GetCost()
     {
-        return _cost;
+        return cost;
     }
     override 
         public int GetImpulse()
@@ -32,7 +33,7 @@ public class FireThrowerShoot : Projectile
         Destroy(gameObject, 10);
     }
 
-    protected  void Launch()
+    private void Launch()
     {
         transform.Translate(0, 0, speed * Time.deltaTime);
         FireThrow();
@@ -47,7 +48,7 @@ public class FireThrowerShoot : Projectile
         _currentTimeToThrow = _fireThrowTime;
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, _maxHeightDistance))
+        if (Physics.Raycast(ray, out hit, _maxHeightDistance, hit_layer))
         {
             Instantiate(fire, hit.point, transform.rotation);
         }
@@ -61,10 +62,15 @@ public class FireThrowerShoot : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag(enemyTag))
+        if (collision.gameObject.layer == hit_layer)
         {
-            collision.collider.GetComponent<Enemy>().TakeDamage(damage);
+            Enemy target = collision.collider.GetComponent<Enemy>();
+            if (target != null)
+            {
+                target.TakeDamage(damage);
+            }
         }
+        explosiveScript.Explode();
         SelfDestroy();
     }
     

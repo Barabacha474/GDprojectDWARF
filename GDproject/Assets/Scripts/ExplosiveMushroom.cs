@@ -4,8 +4,7 @@ public class ExplosiveMushroom : Enemy
 {
     [SerializeField] private int maxHealth;
     private int _health;
-    private float _explosionRadius;
-    private float _explosionForce;
+    [SerializeField] private ExplosiveScript explosiveScript;
     
     void Start()
     {
@@ -19,11 +18,12 @@ public class ExplosiveMushroom : Enemy
         if (_health < 0)
         {
             _health = maxHealth;
-            Explode();
+            explosiveScript.Explode();
         }
     }
-
-    private void Explode()
+    
+    override 
+    public void Ignite()
     {
     }
 }
