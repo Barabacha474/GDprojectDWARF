@@ -14,7 +14,7 @@ public class FireScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("FIRE!");
+        Debug.Log("BURN!");
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {

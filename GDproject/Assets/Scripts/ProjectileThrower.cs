@@ -51,7 +51,7 @@ public class ProjectileThrower : MonoBehaviour
             Rigidbody _projectile_rigidbody = _instantiated_projectile.GetComponent<Rigidbody>();
             if (_projectile_rigidbody != null)
             {
-                Vector3 _force_vector = _camera_transform.forward * _throw_force + transform.up * _throw_upward_force; 
+                Vector3 _force_vector = (_camera_transform.forward * _throw_force + transform.up * _throw_upward_force) * 0; 
                 _projectile_rigidbody.AddForce(_force_vector, ForceMode.Impulse);
             }
         }

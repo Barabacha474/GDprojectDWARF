@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-
+    [SerializeField] private Rigidbody playerRigidbody;
+    [SerializeField] private Transform cameraTransform;
     [SerializeField] private Animator animator;
     [SerializeField] private float firing_cooldown;
+    [SerializeField] private float recoil = 20;
     private bool _ready_to_shoot = true;
 
     [SerializeField] private int capacity;
     [SerializeField] private float reload_per_bullet_cooldown;
+    [SerializeField] private ProjectileThrower projectileThrower;
     private int _current_capacity;
     private bool _reloading = false;
     private bool _charging_bullet = false;
@@ -63,17 +66,19 @@ public class GunScript : MonoBehaviour
                 animator.SetBool("Charging", false);
             }
         }
-        Debug.Log(_current_capacity + " " + _reloading);
+        //Debug.Log(_current_capacity + " " + _reloading);
     }
 
     void Fire()
     {
         if (_current_capacity > 0)
         {
+            projectileThrower.Throw();
             _ready_to_shoot = false;
             _current_capacity--;
             Invoke("ResetReadyToShoot", firing_cooldown);
-            animator.SetBool("Firing", true);
+            animator.SetBool("Firing", true); 
+            playerRigidbody.AddForce(-cameraTransform.forward * recoil, ForceMode.Impulse);
         }
     }
 

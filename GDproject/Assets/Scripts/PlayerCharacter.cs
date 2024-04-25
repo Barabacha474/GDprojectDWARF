@@ -8,6 +8,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private int maxMana = 100;
     [SerializeField] private float manaRegenSpeed = 20f;
     [SerializeField] private float burnDamage = 15f;
+    [SerializeField] private Camera camera;
     private int _health;
     private int _mana;
     private float _tempMana;
@@ -49,6 +50,12 @@ public class PlayerCharacter : MonoBehaviour
         {
             _health -= damage;
             Debug.Log($"Health: {_health}");
+        }
+
+        if (_health <= 0)
+        {
+            camera.transform.parent = null;
+            Destroy(gameObject);
         }
     }
 

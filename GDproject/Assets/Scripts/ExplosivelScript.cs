@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class ExplosiveScript : MonoBehaviour
 {
     private Rigidbody _rigidbody;
-
+    
     [SerializeField] private float _explosion_force = 1000f;
     [SerializeField] private float _explosion_radius = 10f;
     [SerializeField] private int maxDamage = 50;
@@ -67,14 +67,14 @@ public class ExplosiveScript : MonoBehaviour
                         rb.AddExplosionForce(_explosion_force, transform.position, _explosion_radius);
                     }
 
-                    if (_hits[i].gameObject.layer == _damage_layer)
+                    if ( _damage_layer ==(_damage_layer | (1 << _hits[i].gameObject.layer)))
                     {
+                        Debug.Log("Hru");
                         Enemy enemyTarget = _hits[i].GetComponent<Enemy>();
                         if (enemyTarget != null)
                         {
                             int damage = (int)Mathf.Lerp(minDamage, maxDamage, distance / _explosion_radius);
                             enemyTarget.TakeDamage(damage);
-                            continue;
                         }
 
                         PlayerCharacter player = _hits[i].GetComponent<PlayerCharacter>();

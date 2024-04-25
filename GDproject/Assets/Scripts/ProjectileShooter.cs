@@ -13,6 +13,7 @@ public class ProjectileShooter : MonoBehaviour
     private int _currentProjectileIndex = 0;
     [SerializeField] private Vector3 startShootPoint;
     
+    
     private void Start()
     {
         _currentProjectile = projectilesList[0];

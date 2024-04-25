@@ -136,6 +136,7 @@ MonoBehaviour:
     m_Bits: 0
   _explosion_effect: {fileID: 0}
   _explosion_effect_position_height: 0.5
+  destroy_after_explosion: 1
 --- !u!1 &4908661194679291852
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fire: {fileID: 6989654307584813708, guid: 2dbac5dac4b5e8c408c83b1823471f2b, type: 3}
   speed: 5
-  damage: 1
+  damage: 1000
   hit_layer:
     serializedVersion: 2
     m_Bits: 448
@@ -258,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosion_force: 1000
   _explosion_radius: 10
-  maxDamage: 50
+  maxDamage: 5
   minDamage: 5
   _max_number_of_hits: 20
   _hit_layer:
@@ -272,3 +273,4 @@ MonoBehaviour:
     m_Bits: 128
   _explosion_effect: {fileID: 7852541608544545031, guid: 8a76194804bce51428592d455b1ba0a9, type: 3}
   _explosion_effect_position_height: 0.5
+  destroy_after_explosion: 1
