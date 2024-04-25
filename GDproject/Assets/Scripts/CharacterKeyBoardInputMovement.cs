@@ -7,15 +7,34 @@ using UnityEngine.Serialization;
 
 public class CharacterKeyBoardInputMovement : MonoBehaviour
 {
-
+    [Header("External Scripts")]
     [SerializeField] private SurfaceMovement _surfaceMovement;
     [SerializeField] private ProjectileThrower _projectileThrower;
+    
+    [Header("Animators")]
+    [SerializeField] private Animator _left_leg_animator;
+    [SerializeField] private Animator _right_leg_animator;
+    [SerializeField] private List<Activation_struct> _tools_and_weapons = new List<Activation_struct>();
+    [SerializeField] private GameObject gun;
+    
+    [Header("Other")]
     private Vector3 _current_direction;
     [SerializeField] public float sensitivityHor = 3.0f;
+
+
+    [Serializable]
+    struct Activation_struct
+    {
+        public GameObject gameObject;
+        public KeyCode keyCode;
+    }
     
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         _current_direction = transform.forward;
         if (_surfaceMovement == null)
         {
@@ -54,21 +73,68 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
         
         if (_current_direction != Vector3.zero)
         {
-            _surfaceMovement.Move(_current_direction);    
+            _surfaceMovement.Move(_current_direction);
+                
+            _left_leg_animator.SetBool("walk", true);
+            _right_leg_animator.SetBool("walk", true);
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _left_leg_animator.speed = 2;
+                _right_leg_animator.speed = 2;
+            }
+            else
+            {
+                _left_leg_animator.speed = 1;
+                _right_leg_animator.speed = 1;
+            }
+            
         }
         else
         {
             _surfaceMovement.DoNotMove();
+            
+            _left_leg_animator.SetBool("walk", false);
+            _right_leg_animator.SetBool("walk", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _surfaceMovement.Jump();
+            _left_leg_animator.SetBool("walk", false);
+            _right_leg_animator.SetBool("walk", false);
         }
         
         if (Input.GetKey(KeyCode.G))
         {
             _projectileThrower.Throw();
         }
+
+        foreach (var tool_or_weapon in _tools_and_weapons)
+        {
+            if (Input.GetKey(tool_or_weapon.keyCode))
+            {
+                DeactivateGun();
+                Invoke("ActivateGun", 0.5f);
+                tool_or_weapon.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    void DeactivateGun()
+    {
+        try
+        {
+            gun.GetComponent<GunScript>().Hide();
+        }
+        catch (Exception e)
+        {
+            gun.SetActive(false);
+        }
+    }
+
+    void ActivateGun()
+    {
+        gun.SetActive(true);
     }
 }

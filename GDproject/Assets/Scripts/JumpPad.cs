@@ -11,7 +11,9 @@ public class JumpPad : MonoBehaviour
     {
         Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
         if (rb != null) {
-            rb.AddForce(transform.up * _force);
+            rb.AddForce(transform.up * 5f * _force);
         }
     }
+
+    
 }

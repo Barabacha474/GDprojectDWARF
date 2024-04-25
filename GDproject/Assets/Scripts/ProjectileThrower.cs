@@ -37,10 +37,6 @@ public class ProjectileThrower : MonoBehaviour
             _current_cooldown = _cooldown;
             _able_to_throw = true;
         }
-        if (Input.GetKey(KeyCode.G))
-        {
-            Throw();    
-        }
     }
 
     public void Throw()
