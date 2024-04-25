@@ -39,6 +39,11 @@ public class ProjectileThrower : MonoBehaviour
         }
     }
 
+    public bool AbleToThrow()
+    {
+        return _able_to_throw;
+    }
+
     public void Throw()
     {
         if (_able_to_throw)

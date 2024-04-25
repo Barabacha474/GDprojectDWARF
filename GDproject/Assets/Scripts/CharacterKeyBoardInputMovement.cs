@@ -88,7 +88,6 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
                 _left_leg_animator.speed = 1;
                 _right_leg_animator.speed = 1;
             }
-            
         }
         else
         {
@@ -98,16 +97,16 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
             _right_leg_animator.SetBool("walk", false);
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            _surfaceMovement.Dash(_current_direction);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _surfaceMovement.Jump();
             _left_leg_animator.SetBool("walk", false);
             _right_leg_animator.SetBool("walk", false);
-        }
-        
-        if (Input.GetKey(KeyCode.G))
-        {
-            _projectileThrower.Throw();
         }
 
         foreach (var tool_or_weapon in _tools_and_weapons)
@@ -116,7 +115,19 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
             {
                 DeactivateGun();
                 Invoke("ActivateGun", 0.5f);
-                tool_or_weapon.gameObject.SetActive(true);
+                
+                if (tool_or_weapon.keyCode == KeyCode.G)
+                {
+                    if (_projectileThrower.AbleToThrow())
+                    {
+                        _projectileThrower.Throw();
+                        tool_or_weapon.gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    tool_or_weapon.gameObject.SetActive(true);
+                }
             }
         }
     }
