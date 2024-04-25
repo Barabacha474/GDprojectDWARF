@@ -71,11 +71,6 @@ public class FireThrowerShoot : Projectile
             }
         }
         explosiveScript.Explode();
-        SelfDestroy();
-    }
-    
-    private void SelfDestroy()
-    {
-        Destroy(gameObject);
+        
     }
 }
