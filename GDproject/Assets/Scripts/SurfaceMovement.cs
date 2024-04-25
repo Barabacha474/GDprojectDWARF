@@ -122,10 +122,16 @@ public class SurfaceMovement : MonoBehaviour
         CalculateNormal(direction);
         
         _offset = Vector3.ProjectOnPlane(direction, _normal).normalized;
+        FixDirection();
         
         _rigidbody.AddForce(_offset * (_movement_speed * 3000f * Time.deltaTime), ForceMode.Force);
         
         LimitSpeed();
+    }
+
+    private void FixDirection()
+    {
+        _offset = new Vector3(-_offset.z, _offset.y, _offset.x);
     }
 
     private void LimitSpeed()
@@ -278,4 +284,6 @@ public class SurfaceMovement : MonoBehaviour
             Gizmos.DrawLine(transform.position, transform.position + transform.up);
         }
     }
+
+    
 }
