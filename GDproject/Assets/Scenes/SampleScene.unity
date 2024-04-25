@@ -1719,6 +1719,10 @@ PrefabInstance:
       propertyPath: _tools_and_weapons.Array.data[0].keyCode
       value: 103
       objectReference: {fileID: 0}
+    - target: {fileID: 6265361515002872451, guid: 0c20662ff1dff7d4bb510e805bce5315, type: 3}
+      propertyPath: _dash_force
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 7874663025021924257, guid: 0c20662ff1dff7d4bb510e805bce5315, type: 3}
       propertyPath: m_Name
       value: Player

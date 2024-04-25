@@ -97,6 +97,11 @@ public class CharacterKeyBoardInputMovement : MonoBehaviour
             _right_leg_animator.SetBool("walk", false);
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            _surfaceMovement.Dash(_current_direction);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _surfaceMovement.Jump();

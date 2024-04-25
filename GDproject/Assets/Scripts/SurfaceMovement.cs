@@ -17,12 +17,14 @@ public class SurfaceMovement : MonoBehaviour
     [SerializeField] private float walk_speed = 6.0f;
     [SerializeField] private float run_speed = 12f;
     [SerializeField] private float _jump_force = 15f;
+    [SerializeField] private float _dash_force = 100f;
     [SerializeField] private float max_angle = 45f;
     [SerializeField] private float _player_height = 2f;
     [SerializeField] private LayerMask _ground_lm;
     private Vector3 _normal;
     private Vector3 _offset;
     private bool _grounded;
+    private bool _command_dashing;
     private bool _command_running;
     private bool _command_move;
     private MovingState _movingState;
@@ -127,6 +129,13 @@ public class SurfaceMovement : MonoBehaviour
         _rigidbody.AddForce(_offset * (_movement_speed * 3000f * Time.deltaTime), ForceMode.Force);
         
         LimitSpeed();
+    }
+
+    public void Dash(Vector3 direction)
+    {
+        _offset = direction;
+        FixDirection();
+        _rigidbody.AddForce(_offset.normalized * _dash_force, ForceMode.Impulse);
     }
 
     private void FixDirection()
