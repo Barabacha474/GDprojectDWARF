@@ -285,11 +285,11 @@ public class SurfaceMovement : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position, transform.position + _normal * 2);
             //drawing forward projected line
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + Vector3.ProjectOnPlane(transform.forward, _normal).normalized * 3);
+            //Gizmos.color = Color.red;
+            //Gizmos.DrawLine(transform.position, transform.position + Vector3.ProjectOnPlane(transform.forward, _normal).normalized * 3);
             //drawing forward and up line
             Gizmos.color = Color.black;
-            Gizmos.DrawLine(transform.position, transform.position + transform.forward);
+            //Gizmos.DrawLine(transform.position, transform.position + transform.forward);
             Gizmos.DrawLine(transform.position, transform.position + transform.up);
         }
     }

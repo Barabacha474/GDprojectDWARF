@@ -35,7 +35,8 @@ public class EnemyNavMeshBehaviour : MonoBehaviour
         _distance_to_player = (transform.position - player_transform.position).magnitude;
         if (_distance_to_player <= range_of_detection)
         {
-            _navMeshAgent.destination = player_transform.position;    
+            _navMeshAgent.destination = player_transform.position;
+            transform.LookAt(player_transform);
         }
 
         if (_distance_to_player <= range_of_attack)
