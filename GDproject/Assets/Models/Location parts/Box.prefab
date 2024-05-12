@@ -10988,6 +10988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
+    - target: {fileID: 3565192778922426710, guid: 2248f2159d192d94885cb73101bdf68b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5548515697536143570, guid: 2248f2159d192d94885cb73101bdf68b, type: 3}
       propertyPath: m_Name
       value: ceiling

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: T tube
       objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26

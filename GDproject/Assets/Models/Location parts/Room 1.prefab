@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5010299903375863013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,6 +425,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: V Tube (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -454,6 +462,10 @@ PrefabInstance:
     - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_Name
       value: Tube (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -573,6 +585,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mushroom (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69ac595ed4c3c7e49a16ae971d101741, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 69ac595ed4c3c7e49a16ae971d101741, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -594,6 +614,10 @@ PrefabInstance:
     - target: {fileID: 2397929771690755173, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
       propertyPath: m_Name
       value: barrel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397929771690755173, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3030070155905752799, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
       propertyPath: m_LocalScale.x
@@ -650,6 +674,10 @@ PrefabInstance:
     - target: {fileID: 3030070155905752799, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686406788898979004, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -791,6 +819,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: V Tube (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -812,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_Name
       value: Tube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalScale.x
@@ -887,6 +927,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tube (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5
@@ -960,6 +1004,10 @@ PrefabInstance:
     - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_Name
       value: Tube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalScale.x
@@ -1035,6 +1083,10 @@ PrefabInstance:
     - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_Name
       value: "\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1138,6 +1190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: V Tube (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1208,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: T tube (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6003528967731079259, guid: 6dede35367771be4cbe33ba69e5d89cd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1229,6 +1293,10 @@ PrefabInstance:
     - target: {fileID: 2397929771690755173, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
       propertyPath: m_Name
       value: barrel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397929771690755173, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3030070155905752799, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1286,6 +1354,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6686406788898979004, guid: a97824154cd5c304e942b65fb9c3d75d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1307,6 +1379,10 @@ PrefabInstance:
     - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_Name
       value: Tube (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalScale.x
@@ -1418,6 +1494,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: V Tube (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1487,6 +1571,10 @@ PrefabInstance:
     - target: {fileID: 9062569324573652423, guid: caa5b2f200987484c984514fad4116df, type: 3}
       propertyPath: m_Name
       value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062569324573652423, guid: caa5b2f200987484c984514fad4116df, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1566,6 +1654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: X tube
       objectReference: {fileID: 0}
+    - target: {fileID: 3565192778922426710, guid: 2248f2159d192d94885cb73101bdf68b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1635,6 +1727,14 @@ PrefabInstance:
     - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
       propertyPath: m_Name
       value: V Tube (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1776,6 +1876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: V Tube (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1837,6 +1945,14 @@ PrefabInstance:
     - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
       propertyPath: m_Name
       value: V Tube (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1937,6 +2053,10 @@ PrefabInstance:
     - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_Name
       value: Tube
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029101476062242928, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5969315556672258647, guid: b5502dcd2dd184840a7bb04294e8bc68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2040,6 +2160,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: V Tube (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2101,6 +2229,10 @@ PrefabInstance:
     - target: {fileID: 6003528967731079259, guid: 6dede35367771be4cbe33ba69e5d89cd, type: 3}
       propertyPath: m_Name
       value: T tube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003528967731079259, guid: 6dede35367771be4cbe33ba69e5d89cd, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2169,6 +2301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: T tube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6003528967731079259, guid: 6dede35367771be4cbe33ba69e5d89cd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2234,6 +2370,14 @@ PrefabInstance:
     - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
       propertyPath: m_Name
       value: V Tube (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116166669359702586, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004120603807155520, guid: 7da7f34611e27bb44a7e54d1d00cef89, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
