@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Granade : MonoBehaviour
+public class Granade : Projectile
 {
-    [SerializeField] private ExplosiveScript _explosiveScript;
+    
+    private Rigidbody _rigidbody;
+    [SerializeField] private float throwForce;
+    private int _cost = 20;
+    private int _impulse = 1;
+    [SerializeField] private ExplosiveScript explosiveScript;
 
     [SerializeField] private float _delay = 1f;
 
-    private float _current_delay = 0;
+    private float _current_delay;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +22,32 @@ public class Granade : MonoBehaviour
         {
             throw new Exception("Delay is lesser than zero!");
         }
+
+        _current_delay = _delay;
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.AddForce( transform.forward * throwForce, ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        _current_delay += Time.deltaTime;
-        if (_current_delay >= _delay && !_explosiveScript.isExploded())
+        _current_delay -= Time.deltaTime;
+        if (_current_delay <= 0 && !explosiveScript.isExploded())
         {
             Debug.Log("Time to explode!");
-            _explosiveScript.Explode();
+            explosiveScript.Explode();
         }
+    }
+
+    override 
+        public int GetCost()
+    {
+        return _cost;
+    }
+    
+    override 
+        public int GetImpulse()
+    {
+        return _impulse;
     }
 }

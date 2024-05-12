@@ -95,7 +95,7 @@ public class SurfaceMovement : MonoBehaviour
 
         if (show_debug_log)
         {
-            Debug.Log(_movingState + " " + _rigidbody.velocity.magnitude);
+            //Debug.Log(_movingState + " " + _rigidbody.velocity.magnitude);
         }
     }
     
