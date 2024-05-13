@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using UnityEngine;
 
 public class SurfaceMovement : MonoBehaviour
@@ -14,7 +11,7 @@ public class SurfaceMovement : MonoBehaviour
 
     [Header("Movement settings")] 
     private float _movement_speed;
-    [SerializeField] private float walk_speed = 6.0f;
+    [SerializeField] private float walk_speed = 6.0f;   
     [SerializeField] private float run_speed = 12f;
     [SerializeField] private float _jump_force = 15f;
     [SerializeField] private float _dash_force = 100f;
@@ -29,10 +26,6 @@ public class SurfaceMovement : MonoBehaviour
     private bool _command_move;
     private MovingState _movingState;
     private Dictionary<String, ContactPoint[]> CurrentContactPointsMap = new Dictionary<string, ContactPoint[]>();
-    
-    [Header("Debug")]
-    [SerializeField] public bool draw_vectors;
-    [SerializeField] public bool show_debug_log;
 
     enum MovingState
     {
@@ -91,11 +84,6 @@ public class SurfaceMovement : MonoBehaviour
         else
         {
             _movingState = MovingState.AIR;
-        }
-
-        if (show_debug_log)
-        {
-            //Debug.Log(_movingState + " " + _rigidbody.velocity.magnitude);
         }
     }
     
@@ -189,16 +177,10 @@ public class SurfaceMovement : MonoBehaviour
     void OnCollisionEnter (Collision other) {
         if (_ground_lm == (_ground_lm | (1 << other.gameObject.layer)))
         {
-            CurrentContactPointsMap.Add(other.gameObject.name, other.contacts);
-
-            if (show_debug_log)
-            {
-                foreach (var contact in CurrentContactPointsMap) {
-                    Debug.Log((contact.Value[0].point - transform.position) + " " + contact.Value[0].point + " " 
-                              + Vector3.Angle(Vector3.up, contact.Value[0].normal) + " " + contact.Key);
-                }
-                Debug.Log("_______________________________");
+            if (CurrentContactPointsMap.ContainsKey(other.gameObject.name)) {
+                CurrentContactPointsMap.Remove(other.gameObject.name);
             }
+            CurrentContactPointsMap.Add(other.gameObject.name, other.contacts);
             
             _grounded = CheckGrounded();
             setState();
@@ -217,15 +199,6 @@ public class SurfaceMovement : MonoBehaviour
         if (_ground_lm == (_ground_lm | (1 << other.gameObject.layer)))
         {
             CurrentContactPointsMap.Remove(other.gameObject.name);
-
-            if (show_debug_log)
-            {
-                foreach (var contact in CurrentContactPointsMap) {
-                    Debug.Log((contact.Value[0].point - transform.position) + " " + contact.Value[0].point + " " 
-                              + Vector3.Angle(Vector3.up, contact.Value[0].normal) + " " + contact.Key);
-                }
-                Debug.Log("_______________________________");
-            }
          
             _grounded = CheckGrounded();
             setState();
@@ -271,28 +244,4 @@ public class SurfaceMovement : MonoBehaviour
 
         return false;
     }
-    
-    private void OnDrawGizmos()
-    {
-        if (draw_vectors)
-        {
-            foreach (var contact in CurrentContactPointsMap)
-            {
-                Gizmos.color = Color.blue; 
-                Gizmos.DrawLine(transform.position, contact.Value[0].point); 
-            }
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.position, transform.position + _normal * 2);
-            //drawing forward projected line
-            //Gizmos.color = Color.red;
-            //Gizmos.DrawLine(transform.position, transform.position + Vector3.ProjectOnPlane(transform.forward, _normal).normalized * 3);
-            //drawing forward and up line
-            Gizmos.color = Color.black;
-            //Gizmos.DrawLine(transform.position, transform.position + transform.forward);
-            Gizmos.DrawLine(transform.position, transform.position + transform.up);
-        }
-    }
-
-    
 }

@@ -1,9 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class PlayerCharacter : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int maxMana = 100;
     [SerializeField] private float manaRegenSpeed = 20f;
@@ -14,13 +20,21 @@ public class PlayerCharacter : MonoBehaviour
     private float _tempMana;
     private float _tempHealth;
     private float _burningTime;
+    
+    [Header("UI")] 
+    [SerializeField] private TMP_Text HP_text;
+    [SerializeField] private TMP_Text AMMO_LEFT_text;
+    [SerializeField] private TMP_Text AMMO_IN_CHAMBER_text;
+    [SerializeField] private TMP_Text GRENADE_LEFT_text;
+
+    [Header("Links")] 
+    [SerializeField] private GunScript gun;
+
+    [SerializeField] private ProjectileThrower granade;
    
     
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        GetComponent<Rigidbody>().freezeRotation = true;
         _health = maxHealth;
         _mana = maxMana;
     }
@@ -29,6 +43,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         Burn();
         ManaRegen();
+        ShowUI();
     }
 
     private void ManaRegen()
@@ -40,22 +55,29 @@ public class PlayerCharacter : MonoBehaviour
             return;
         _mana += (int) _tempMana;
         _tempMana -= (int) _tempMana;
-        
-        //Debug.Log(_mana);
     }
+
+    private void ShowUI()
+    {
+        HP_text.SetText("HP LEFT: " + _health);
+        AMMO_LEFT_text.SetText("AMMO LEFT: " + gun.get_remain_ammo());
+        AMMO_IN_CHAMBER_text.SetText("AMMO IN CHAMBER: " + gun.get_current_capacity());
+        GRENADE_LEFT_text.SetText("GRENADES LEFT: " + granade.getProjectilesLeft());
+    }
+
 
     public void Hurt(int damage)
     {
         if (_health > 0)
         {
             _health -= damage;
-            Debug.Log($"Health: {_health}");
         }
 
         if (_health <= 0)
         {
-            camera.transform.parent = null;
-            Destroy(gameObject);
+            SceneManager.LoadScene("Scenes/Levels");
+            //camera.transform.parent = null;
+            //Destroy(gameObject);
         }
     }
 
@@ -86,5 +108,4 @@ public class PlayerCharacter : MonoBehaviour
             _tempHealth -= (int)_tempHealth;
         }
     }
-
 }

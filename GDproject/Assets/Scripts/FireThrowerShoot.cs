@@ -37,7 +37,6 @@ public class FireThrowerShoot : Projectile
     {
         transform.Translate(0, 0, speed * Time.deltaTime);
         FireThrow();
-        
     }
 
     private void FireThrow()

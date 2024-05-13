@@ -12,7 +12,6 @@ public class Axe : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
-            Debug.Log("BONK");
             enemy.TakeDamage(damage);
             
         }

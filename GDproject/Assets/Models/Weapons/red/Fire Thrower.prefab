@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2927011569155887913}
   - component: {fileID: 922864643756670339}
   - component: {fileID: 6633453231508759970}
-  - component: {fileID: 4419141980141596785}
-  - component: {fileID: 1447818902215858178}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -85,58 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4419141980141596785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956522944837712425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde96295de695b742af7f8156eed925d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fire: {fileID: 0}
-  speed: 0
-  damage: 0
-  hit_layer:
-    serializedVersion: 2
-    m_Bits: 0
-  cost: 20
-  _fireThrowTime: 0.05
-  _maxHeightDistance: 15
-  _impulse: 20
-  explosiveScript: {fileID: 1447818902215858178}
---- !u!114 &1447818902215858178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956522944837712425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7079a75d71a63484fa4908542f45ce8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _explosion_force: 1000
-  _explosion_radius: 10
-  maxDamage: 50
-  minDamage: 5
-  _max_number_of_hits: 20
-  _hit_layer:
-    serializedVersion: 2
-    m_Bits: 0
-  _damage_layer:
-    serializedVersion: 2
-    m_Bits: 0
-  _obstacle_layer:
-    serializedVersion: 2
-    m_Bits: 0
-  _explosion_effect: {fileID: 0}
-  _explosion_effect_position_height: 0.5
-  destroy_after_explosion: 1
 --- !u!1 &4908661194679291852
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,8 +94,8 @@ GameObject:
   - component: {fileID: 9044117798747994794}
   - component: {fileID: -3293993575017563186}
   - component: {fileID: -3167204487632306203}
-  - component: {fileID: -3151446727410645253}
-  - component: {fileID: 6718401699330403980}
+  - component: {fileID: 5418276297519847862}
+  - component: {fileID: 4022392386074863361}
   m_Layer: 0
   m_Name: Fire Thrower
   m_TagString: Untagged
@@ -222,7 +168,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 1dd4f77b24d83e048ade861f1e02e61c, type: 3}
---- !u!114 &-3151446727410645253
+--- !u!114 &5418276297519847862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,21 +177,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4908661194679291852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde96295de695b742af7f8156eed925d, type: 3}
+  m_Script: {fileID: 11500000, guid: cd0aa3b15efebf648995187161139f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fire: {fileID: 6989654307584813708, guid: 2dbac5dac4b5e8c408c83b1823471f2b, type: 3}
-  speed: 5
-  damage: 1000
+  speed: 10
+  damage: 10
   hit_layer:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 704
   cost: 20
   _fireThrowTime: 0.05
   _maxHeightDistance: 15
-  _impulse: 25
-  explosiveScript: {fileID: 6718401699330403980}
---- !u!114 &6718401699330403980
+  _impulse: 20
+  explosiveScript: {fileID: 4022392386074863361}
+--- !u!114 &4022392386074863361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,20 +200,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4908661194679291852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7079a75d71a63484fa4908542f45ce8c, type: 3}
+  m_Script: {fileID: 11500000, guid: c5ad036aa7349e64289f5654cbe6338e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosion_force: 1000
+  _explosion_force: 2500
   _explosion_radius: 10
-  maxDamage: 5
+  maxDamage: 10
   minDamage: 5
   _max_number_of_hits: 20
   _hit_layer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
   _damage_layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   _obstacle_layer:
     serializedVersion: 2
     m_Bits: 128

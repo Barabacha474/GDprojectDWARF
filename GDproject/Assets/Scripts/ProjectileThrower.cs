@@ -15,11 +15,16 @@ public class ProjectileThrower : MonoBehaviour
     [SerializeField] private bool _able_to_throw = true;
 
     [SerializeField] private float _cooldown;
+    [SerializeField] private int _projectiles_left = 10;
 
     private float _current_cooldown;
     // Start is called before the first frame update
     void Start()
     {
+        if (_projectiles_left < 0)
+        {
+            throw new Exception("Projectiles left is lesser than zero!");
+        }
         if (_cooldown < 0)
         {
             throw new Exception("Cooldown is lesser than zero!");
@@ -46,8 +51,14 @@ public class ProjectileThrower : MonoBehaviour
 
     public void Throw()
     {
+        if (_projectiles_left == 0)
+        {
+            _able_to_throw = false;
+        }
+        
         if (_able_to_throw)
         {
+            _projectiles_left--;
             _able_to_throw = false;
             _current_cooldown = 0;
             
@@ -60,5 +71,15 @@ public class ProjectileThrower : MonoBehaviour
                 _projectile_rigidbody.AddForce(_force_vector, ForceMode.Impulse);
             }
         }
+    }
+
+    public int getProjectilesLeft()
+    {
+        return _projectiles_left;
+    }
+    
+    public void setProjectilesLeft(int set)
+    {
+        _projectiles_left = set;
     }
 }

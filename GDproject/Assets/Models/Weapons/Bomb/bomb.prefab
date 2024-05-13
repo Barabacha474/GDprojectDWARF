@@ -82,10 +82,10 @@ PrefabInstance:
       addedObject: {fileID: 1802908227548070743}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d08d90751af1a9849ad0d0650916b922, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7372083484018397464}
+      addedObject: {fileID: 805617066342414310}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d08d90751af1a9849ad0d0650916b922, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1728982457872172721}
+      addedObject: {fileID: 3429193307923017718}
   m_SourcePrefab: {fileID: 100100000, guid: d08d90751af1a9849ad0d0650916b922, type: 3}
 --- !u!1 &6499049127060723269 stripped
 GameObject:
@@ -4958,7 +4958,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7372083484018397464
+--- !u!114 &805617066342414310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4967,26 +4967,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6499049127060723269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7079a75d71a63484fa4908542f45ce8c, type: 3}
+  m_Script: {fileID: 11500000, guid: c5ad036aa7349e64289f5654cbe6338e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosion_force: 1000
-  _explosion_radius: 20
+  _explosion_force: 3000
+  _explosion_radius: 10
   maxDamage: 50
   minDamage: 5
   _max_number_of_hits: 20
   _hit_layer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
   _damage_layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   _obstacle_layer:
     serializedVersion: 2
     m_Bits: 128
   _explosion_effect: {fileID: 7852541608544545031, guid: 8a76194804bce51428592d455b1ba0a9, type: 3}
-  _explosion_effect_position_height: 0
---- !u!114 &1728982457872172721
+  _explosion_effect_position_height: 0.5
+  destroy_after_explosion: 1
+--- !u!114 &3429193307923017718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4995,11 +4996,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6499049127060723269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091576e2e7c8f0545bff1eeea78aa3bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 5685c3cf54f7b5b4cafe2509cdcd5ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 25
-  maxDamage: 50
-  minDamage: 5
-  explosiveScript: {fileID: 7372083484018397464}
+  throwForce: 20
+  explosiveScript: {fileID: 805617066342414310}
   _delay: 3
