@@ -8,12 +8,14 @@ public class GunScript : MonoBehaviour
     [SerializeField] private Rigidbody playerRigidbody;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Animator animator;
-    [SerializeField] private float firing_cooldown;
+    [SerializeField] private float firing_cooldown = 0.2f;
     [SerializeField] private float recoil = 20;
     private bool _ready_to_shoot = true;
-
-    [SerializeField] private int capacity;
-    [SerializeField] private float reload_per_bullet_cooldown;
+    
+    [SerializeField] private int capacity = 7;
+    [SerializeField] private int ramain_ammo = 14;
+    private int reset_ammo;
+    [SerializeField] private float reload_per_bullet_cooldown = 1;
     [SerializeField] private ProjectileThrower projectileThrower;
     private int _current_capacity;
     private bool _reloading = false;
@@ -23,11 +25,20 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (ramain_ammo < 0)
+        {
+            throw new Exception("Ammo can't be lesser that zero!");
+        }
+        
+        reset_ammo = ramain_ammo;
+        
         if (capacity < 0)
         {
             throw new Exception("capacity can't be lesser that zero!");
         }
 
+        GetComponent<ProjectileThrower>().setProjectilesLeft(capacity + ramain_ammo);
+        
         _current_capacity = capacity;
         animator.SetBool("Deactivate", false);
     }
@@ -54,6 +65,12 @@ public class GunScript : MonoBehaviour
             }
         }
 
+        if (ramain_ammo == 0)
+        {
+            _reloading = false;
+            animator.SetBool("Charging", false);
+        }
+
         if (_reloading)
         {
             if (_current_capacity < capacity && !_charging_bullet)
@@ -66,7 +83,6 @@ public class GunScript : MonoBehaviour
                 animator.SetBool("Charging", false);
             }
         }
-        //Debug.Log(_current_capacity + " " + _reloading);
     }
 
     void Fire()
@@ -89,8 +105,12 @@ public class GunScript : MonoBehaviour
 
     void LoadNextBullet()
     {
-        _current_capacity++;
-        _charging_bullet = false;
+        if (ramain_ammo > 0)
+        {
+            ramain_ammo--;
+            _current_capacity++; 
+        }
+        _charging_bullet = false; 
         animator.SetBool("Firing", false);
     }
 
@@ -108,5 +128,15 @@ public class GunScript : MonoBehaviour
     private void Deactivate()
     {
         gameObject.SetActive(false);
+    }
+
+    public int get_current_capacity()
+    {
+        return _current_capacity;
+    }
+
+    public int get_remain_ammo()
+    {
+        return ramain_ammo;
     }
 }

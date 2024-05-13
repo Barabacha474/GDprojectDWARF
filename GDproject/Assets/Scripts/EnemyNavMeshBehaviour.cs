@@ -21,6 +21,8 @@ public class EnemyNavMeshBehaviour : MonoBehaviour
         {
             throw new Exception("NavMeshAgent component cannot be null!");
         }
+        
+        _projectileThrower.setProjectilesLeft(10);
     }
 
     // Start is called before the first frame update

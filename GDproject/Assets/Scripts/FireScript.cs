@@ -14,7 +14,6 @@ public class FireScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("BURN!");
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
@@ -25,7 +24,6 @@ public class FireScript : MonoBehaviour
         PlayerCharacter player = other.GetComponent<PlayerCharacter>();
         if (player != null)
         {
-            Debug.Log("FIRE!");
             player.Ignite();
         }
         

@@ -1,13 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ExplosiveScript : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
     
     [SerializeField] private float _explosion_force = 1000f;
     [SerializeField] private float _explosion_radius = 10f;
@@ -26,17 +20,6 @@ public class ExplosiveScript : MonoBehaviour
     void Start()
     {
         _hits = new Collider[_max_number_of_hits];
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.E))
-        {
-            Debug.Log("Explosion!");
-            Explode();
-        }
     }
 
     public void Explode()
@@ -52,11 +35,10 @@ public class ExplosiveScript : MonoBehaviour
             {
                 float distance = Vector3.Distance(_hits[i].transform.position, transform.position);
 
-                //Debug.Log(_hits[i].transform.ToString());
-
                 Instantiate(_explosion_effect, transform.position + transform.up * _explosion_effect_position_height,
                     transform.rotation);
 
+                //if we face obstacle
                 if (!Physics.Raycast(transform.position,
                         (_hits[i].transform.position - transform.position).normalized, distance, _obstacle_layer.value))
                 {
@@ -69,10 +51,11 @@ public class ExplosiveScript : MonoBehaviour
 
                     if ( _damage_layer ==(_damage_layer | (1 << _hits[i].gameObject.layer)))
                     {
-                        Debug.Log("Hru");
                         Enemy enemyTarget = _hits[i].GetComponent<Enemy>();
+                        
                         if (enemyTarget != null)
                         {
+                            
                             int damage = (int)Mathf.Lerp(minDamage, maxDamage, distance / _explosion_radius);
                             enemyTarget.TakeDamage(damage);
                         }
